@@ -11,22 +11,25 @@
     <title>Git Tastic</title>
   </head>
   <body>
-    <h1>It's Gif Tastic!</h1>
-
-    <div id="buttons-area"></div>
-
+    
     <div class="container-fluid">
-        <form id=gif-form>
-            <label for="gif-input">Add a GIF!</label>
-            <input type="text" placeholder="Add a new gif"></input>
+    <h1>It's Gif Tastic!</h1><br>
+
+    <!-- Rendered buttons will be displayed here -->
+    <div id="buttons-area"></div><br>
+    
+        <form id="gif-form">
+            <label for="gif-input">Want to add a new Gif? Search it here!</label>
+            <input type="text" id="gif-input"></input>
+            <br>
+            
             <!-- Button triggers new gif to ba added-->
-            <input id="add-gif" type="submit" value="Search">
+            <input id="add-gif" type="submit" value="Submit">
           </form>
       </div>
-
-      <!-- Rendered gif buttons will go here -->
-      <div id="gifs-here"></div>
-      
+    
+<!-- Gifs will go here -->
+    <div id="gifs-view"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

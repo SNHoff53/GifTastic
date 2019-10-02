@@ -1,58 +1,66 @@
 // Variables declared in an array
 var topics = [
-    "runway-fashion",
+    "fashion",
     "shoes",
     "pokemon",
     "cats"
 ];
 
-
 function topicsDisplay(){
-    $("#buttons-area").empty();
+    $("#gifs-view").empty();
 // Declaring variable of topics 
     topics = $(this).attr("data-name");
-// constructing a URL to search Gify for a random gif when button is clicked
-
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
+    // Ajax called and method is used to  GET info
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    })
+    .then(function(response) {
         console.log(queryURL);
-
         console.log(response);
 
+        // Saving the response from API call to gifResults variable
         var gifResults = response.data;
 
         // looping/counting the gifResult items
         for (var i = 0; i < gifResults.length; i++) {
-                
+                // Creating a new div
                 var gifDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + gifResults[i].rating);
-                var topicsImage = $("<img>");
-                topicsImage.attr("src", gifResults[i].images.fixed_height.url);
 
-                // animation goes here
+                var gifURL = gifResults[i].images.fixed_height.url;
+                var topicsImage = $("<img>");
+
+                // Animation - start/stop gif
+                gifDiv.attr("src", gifURL);
+                gifImage.attr("data-still", gifResults[i].images.fixed_height_still.url);
+                gifImage.attr("data-animate", gifResults[i].images.fixed_height.url);
+                gifImage.attr("data-state", still);
+                gifImage.addClass("animate-gif");
+
                 gifDiv.append(p);
                 gifDiv.append(topicsImage);
                 
-                $("#gifs-here").prepend(gifDiv);
+                $("#gifs-view").prepend(gifDiv);
 
         }
     });
 
 };
 
-// Render new buttons
-function newButton(){
+// Rendering new buttons
+function newButtonRendered(){
+    // Deleting gifs prior to adding new gifs -- do not want repeat buttons
     $("#buttons-area").empty();
 
     // Loops through topics
     for (var i = 0; i < topics.length; i++){
+        // Creating a new button holder
         var a = $("<button>");
         // We are adding the class Topic to our new button
-        a.addClass("topic-btn");
+        a.addClass("topic-btn btn btn-outline-info");
         // Class for attribute
         a.attr("data-name", topics[i]);
         // Text for the new button
@@ -65,12 +73,12 @@ function newButton(){
 $("#add-gif").on("click", function(event){
     event.preventDefault();
 
-    var topic = $("#gif-input").val();
+    var topic = $("#gif-input").val() || '';
     topics.push(topic);
     
-    newButton();
+    newButtonRendered();
 });
 
-$(document).on("click", ".topic", newButton);
+$(document).on("click", ".topic", newButtonRendered);
 
-newButton();
+newButtonRendered();
