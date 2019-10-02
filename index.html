@@ -13,26 +13,20 @@
   <body>
     <h1>It's Gif Tastic!</h1>
 
-    <div id="buttons-view"></div>
-
-    <button data-topics="runway-fashion">Runway-Fashion</button>
-    <button data-topics="shoes">Shoes</button>
-    <button data-topics="pokemon">Pokemon</button>
-    <button data-topics="cats">Cats</button>
+    <div id="buttons-area"></div>
 
     <div class="container-fluid">
-        
-        <form>
-            <div class="form-group">
-              <label for="gif-input">Add a new Gif!</label>
-              <input type="text" class="form-control" id="exampleSearch" aria-describedby="emailHelp">
-              <input type="submit" class="btn btn-outline-info" value="Submit"></input>
-            </div>
+        <form id=gif-form>
+            <label for="gif-input">Add a GIF!</label>
+            <input type="text" placeholder="Add a new gif"></input>
+            <!-- Button triggers new gif to ba added-->
+            <input id="add-gif" type="submit" value="Search">
           </form>
       </div>
 
       <!-- Rendered gif buttons will go here -->
       <div id="gifs-here"></div>
+      
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
