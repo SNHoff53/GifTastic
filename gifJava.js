@@ -1,14 +1,13 @@
 // Variables declared in an array
 var topics = [
-    "fashion",
-    "shoes",
-    "pokemon",
-    "cats"
-];
+        "fashion",
+        "shoes",
+        "pokemon",
+        "cats"
+    ];
 
 function topicsDisplay(){
     $("#gifs-view").empty();
-// Declaring variable of topics 
     topics = $(this).attr("data-name");  
 };
 
@@ -37,19 +36,11 @@ $("#buttons-area").on("click", function(){
                 console.log("for loop");
 
                 var gifURL = gifResults[i].images.fixed_height.url;
+                
                 var topicsImage = $("<img>");
-
-                // Animation - start/stop gif
-                
                 topicsImage.attr("src", gifURL);
-                // topicsImage.attr("data-still", gifResults[i].images.fixed_height_still.url);
-                // topicsImage.attr("data-animate", gifResults[i].images.fixed_height.url);
-                // topicsImage.attr("data-state", still);
-                // topicsImage.addClass("animate-gif");
-
-                gifDiv.append(p);
-                gifDiv.append(topicsImage);
                 
+                gifDiv.append(topicsImage, p);
                 $("#gifs-view").prepend(gifDiv);
 
         }
