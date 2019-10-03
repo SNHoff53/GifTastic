@@ -11,9 +11,11 @@ function topicsDisplay(){
     topics = $(this).attr("data-name");  
 };
 
-$("#buttons-area").on("click", function(){
+$(document).on("click", "#buttons-area", function(){
+    //dynamically created on every click
+var topicsCategory = $(this).data("name")
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicsCategory + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
     $.ajax({
