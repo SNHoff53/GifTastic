@@ -1,21 +1,21 @@
 // Variables declared in an array
 var topics = [
-        "fashion",
-        "shoes",
-        "pokemon",
-        "cats"
-    ];
+    "fashion",
+    "shoes",
+    "pokemon",
+    "cats"
+];
 
 function topicsDisplay(){
-    $("#gifs-view").empty();
-    topics = $(this).attr("data-name");  
+$("#gifs-view").empty();
+topics = $(this).attr("data-name");  
 };
 
 $(document).on("click", "#buttons-area", function(){
-    //dynamically created on every click
+//dynamically created on every click
 var topicsCategory = $(this).data("name")
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicsCategory + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicsCategory + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
     $.ajax({
@@ -38,11 +38,11 @@ var topicsCategory = $(this).data("name")
                 console.log("for loop");
 
                 var gifURL = gifResults[i].images.fixed_height.url;
-                
                 var topicsImage = $("<img>");
-                topicsImage.attr("src", gifURL);
                 
+                topicsImage.attr("src", gifURL);
                 gifDiv.append(topicsImage, p);
+                
                 $("#gifs-view").prepend(gifDiv);
 
         }
