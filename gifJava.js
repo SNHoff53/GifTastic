@@ -9,7 +9,11 @@ var topics = [
 function topicsDisplay(){
     $("#gifs-view").empty();
 // Declaring variable of topics 
-    topics = $(this).attr("data-name");
+    topics = $(this).attr("data-name");  
+};
+
+$("#buttons-area").on("click", function(){
+
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
@@ -23,22 +27,25 @@ function topicsDisplay(){
 
         // Saving the response from API call to gifResults variable
         var gifResults = response.data;
+        console.log(gifResults);
 
         // looping/counting the gifResult items
         for (var i = 0; i < gifResults.length; i++) {
                 // Creating a new div
                 var gifDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + gifResults[i].rating);
+                console.log("for loop");
 
                 var gifURL = gifResults[i].images.fixed_height.url;
                 var topicsImage = $("<img>");
 
                 // Animation - start/stop gif
-                gifDiv.attr("src", gifURL);
-                gifImage.attr("data-still", gifResults[i].images.fixed_height_still.url);
-                gifImage.attr("data-animate", gifResults[i].images.fixed_height.url);
-                gifImage.attr("data-state", still);
-                gifImage.addClass("animate-gif");
+                
+                topicsImage.attr("src", gifURL);
+                // topicsImage.attr("data-still", gifResults[i].images.fixed_height_still.url);
+                // topicsImage.attr("data-animate", gifResults[i].images.fixed_height.url);
+                // topicsImage.attr("data-state", still);
+                // topicsImage.addClass("animate-gif");
 
                 gifDiv.append(p);
                 gifDiv.append(topicsImage);
@@ -47,8 +54,7 @@ function topicsDisplay(){
 
         }
     });
-
-};
+});
 
 // Rendering new buttons
 function newButtonRendered(){
