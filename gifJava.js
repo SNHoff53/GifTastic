@@ -1,21 +1,17 @@
 // Variables declared in an array
-var topics = [
-    "fashion",
-    "shoes",
-    "pokemon",
-    "cats"
-];
+var topics = [];
 
-function topicsDisplay(){
-$("#gifs-view").empty();
-topics = $(this).attr("data-name");  
-};
+// function displayTopics() {
+// $("#gifs-view").empty();
+  
+// };
 
-$(document).on("click", "#buttons-area", function(){
-//dynamically created on every click
-var topicsCategory = $(this).data("name")
+// Event listener
+$("button").on("click", function(){
 
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicsCategory + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
+    topics = $(this).attr("data-name");
+
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
     $.ajax({
@@ -49,17 +45,20 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicsCategory + "&ap
     });
 });
 
-// Rendering new buttons
+// Function for displaying the new gif added from gif-input
 function newButtonRendered(){
+
     // Deleting gifs prior to adding new gifs -- do not want repeat buttons
     $("#buttons-area").empty();
 
-    // Loops through topics
+    // Loops through the array of topics
+    
     for (var i = 0; i < topics.length; i++){
-        // Creating a new button holder
+        
+        // Creating a new button holder dynamically for each topic in the array
         var a = $("<button>");
         // We are adding the class Topic to our new button
-        a.addClass("topic-btn btn btn-outline-info");
+        a.addClass("topic-btn, button btn btn-light");
         // Class for attribute
         a.attr("data-name", topics[i]);
         // Text for the new button
@@ -72,7 +71,7 @@ function newButtonRendered(){
 $("#add-gif").on("click", function(event){
     event.preventDefault();
 
-    var topic = $("#gif-input").val() || '';
+    var topic = $("#gif-input").val().trim();
     topics.push(topic);
     
     newButtonRendered();

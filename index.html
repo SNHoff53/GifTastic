@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
 
     <title>Git Tastic</title>
   </head>
@@ -16,20 +18,33 @@
     <h1>It's Gif Tastic!</h1><br>
 
     <!-- Rendered buttons will be displayed here -->
+    <button type="button" class="btn btn-light" data-name="stylish">Fashion</button>
+    <button type="button" class="btn btn-light" data-name="shoes">Shoes</button>
+    <button type="button" class="btn btn-light" data-name="cute-pokemon">Pokemon</button>
+    <button type="button" class="btn btn-light" data-name="cats">Cats</button>
+    <button type="button" class="btn btn-light" data-name="seasons">Fall Time</button>
+    <button type="button" class="btn btn-light" data-name="reading">Reading</button>
+    <button type="button" class="btn btn-light" data-name="family">Family</button>
+    <button type="button" class="btn btn-light" data-name="flowers">Flowers</button>
+    <button type="button" class="btn btn-light" data-name="chocolate">Chocolate</button>
+    <button type="button" class="btn btn-light" data-name="food">Food</button>
     <div id="buttons-area"></div><br>
     
         <form id="gif-form">
             <label for="gif-input">Want to add a new Gif? Search it here!</label>
-            <input type="text" id="gif-input"></input>
+            <input type="text" id="gif-input"></input><br>
             <br>
             
             <!-- Button triggers new gif to ba added-->
-            <input id="add-gif" type="submit" value="Submit">
+            <input id="add-gif" class="btn btn-light" type="submit" value="Submit">
           </form>
-      </div>
+      </div><br>
     
 <!-- Gifs will go here -->
+<div class="container-fluid">
     <div id="gifs-view"></div>
+</div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
