@@ -1,17 +1,17 @@
 // Variables declared in an array
 var topics = [];
 
-// function displayTopics() {
-// $("#gifs-view").empty();
+function displayTopics() {
+$("#gifs-view").empty();
   
-// };
+};
 
 // Event listener
 $("button").on("click", function(){
 
-    topics = $(this).attr("data-name");
+    topic = $(this).attr("data-name");
 
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
     $.ajax({
@@ -40,7 +40,6 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=fA
                 gifDiv.append(topicsImage, p);
                 
                 $("#gifs-view").prepend(gifDiv);
-
         }
     });
 });
@@ -58,7 +57,7 @@ function newButtonRendered(){
         // Creating a new button holder dynamically for each topic in the array
         var a = $("<button>");
         // We are adding the class Topic to our new button
-        a.addClass("topic-btn, button btn btn-light");
+        a.addClass("button, btn btn-light");
         // Class for attribute
         a.attr("data-name", topics[i]);
         // Text for the new button
@@ -80,3 +79,5 @@ $("#add-gif").on("click", function(event){
 $(document).on("click", ".topic", newButtonRendered);
 
 newButtonRendered();
+
+// API is not recognizing the new topic

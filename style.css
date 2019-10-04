@@ -1,12 +1,22 @@
+* {
+    box-sizing: border-box;
+}
 
+body{
+    background-image: url("./assets/halftone-yellow.png");
+    background-repeat:repeat;
+    background-size: 100%;
+}
 .gif-form{
     float: right;
 }
 
 h1 {
-    font-family: 'Lobster', cursive;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 59px;
+    margin-top: 40px;
 }
 
 button, input {
-    font-family: 'Courgette', cursive;
+    font-family: 'M PLUS 1p', sans-serif;
 }
