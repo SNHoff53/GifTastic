@@ -8,10 +8,13 @@ $("#gifs-view").empty();
 
 // Event listener
 $("button").on("click", function(){
+    onTopicClick(this);
+});
 
-    topic = $(this).attr("data-name");
+function onTopicClick(button){
 
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
+    topic = $(button).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=fAd8nhiRNR2VtraFeMkS7t2FaNyqITEc&limit=10";
 
     // Ajax called and method is used to  GET info
     $.ajax({
@@ -42,7 +45,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=fAd
                 $("#gifs-view").prepend(gifDiv);
         }
     });
-});
+};
 
 // Function for displaying the new gif added from gif-input
 function newButtonRendered(){
@@ -64,20 +67,24 @@ function newButtonRendered(){
         a.text(topics[i]);
         // Appending/adding the new button to the button div
         $("#buttons-area").append(a);
+        onTopicClick(a);
     }
 }
+
 // A topic button has been clicked
-$("#add-gif").on("click", function(event){
+$("#add-gif").on("click", function(){
+    makeClickable(event)
+});
+
+function makeClickable(event){
     event.preventDefault();
 
     var topic = $("#gif-input").val().trim();
     topics.push(topic);
     
     newButtonRendered();
-});
+};
 
 $(document).on("click", ".topic", newButtonRendered);
 
 newButtonRendered();
-
-// API is not recognizing the new topic
