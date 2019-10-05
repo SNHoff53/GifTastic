@@ -32,6 +32,7 @@ function onTopicClick(button){
         // looping/counting the gifResult items
         for (var i = 0; i < gifResults.length; i++) {
                 // Creating a new div
+            if(gifResults[i].rating !== "r"){
                 var gifDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + gifResults[i].rating);
                 console.log("for loop");
@@ -43,6 +44,7 @@ function onTopicClick(button){
                 gifDiv.append(topicsImage, p);
                 
                 $("#gifs-view").prepend(gifDiv);
+            }
         }
     });
 };
