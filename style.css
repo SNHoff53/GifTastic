@@ -8,7 +8,7 @@ body{
     background-size: 100%;
 }
 
-#gif-form{
+#gif-form-fluid{
     float: right;
 }
 
@@ -20,6 +20,10 @@ h1 {
     font-family: 'M PLUS 1p', sans-serif;
     font-size: 59px;
     margin-top: 40px;
+}
+
+.btn-light {
+    background-color: honeydew;
 }
 
 button, input {
