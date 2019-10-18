@@ -1,14 +1,15 @@
+
 // Variables declared in an array
 var topics = [];
 
 function displayTopics() {
-$("#gifs-view").empty();
-  
+    $("#gifs-view").empty();
 };
 
 // Event listener
 $("button").on("click", function(){
     onTopicClick(this);
+    $(".buttons-area").removeClass("active");
 });
 
 function onTopicClick(button){
@@ -74,18 +75,16 @@ function newButtonRendered(){
 }
 
 // A topic button has been clicked
-$("#add-gif").on("click", function(){
-    makeClickable(event)
-});
-
-function makeClickable(event){
+$("#add-gif").on("click", function(event){
     event.preventDefault();
 
-    var topic = $("#gif-input").val().trim();
-    topics.push(topic);
-    
+    var newTopic = $("#gif-input").eq(0).val();
+
+    if (newTopic.length > 2){
+        topics.push(newTopic);
+    }
     newButtonRendered();
-};
+});
 
 $(document).on("click", ".topic", newButtonRendered);
 
